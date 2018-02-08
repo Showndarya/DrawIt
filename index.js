@@ -5,16 +5,30 @@ var draw = (function(){
 	canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
 
-	var width = canvas.innerWidth;
-	var height = canvas.innerHeight;
+	var down = false;
 
 	var drawPoint = function(e)
 	{
-		context.beginPath();
-		context.arc(e.offsetX, e.offsetY, 10,0,2*Math.PI);
-		context.fill();
+		if(this.down == true)
+		{
+			context.beginPath();
+			context.arc(e.clientX, e.clientY, 10,0,2*Math.PI);
+			context.fill();
+		}
 	}
 
-	canvas.addEventListener('mousedown',drawPoint);
+	var upordown = function(e)
+	{
+		if(this.down == true) this.down=false;
+		else 
+		{
+			this.down = true;
+			drawPoint(e);
+		}
+	}
+
+	canvas.addEventListener('mousedown',upordown);
+	canvas.addEventListener('mousemove',drawPoint);
+	canvas.addEventListener('mouseup',upordown);
 
 })()
