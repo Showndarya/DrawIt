@@ -60,6 +60,7 @@ var draw = function(){
 		}
 	}
 
+	// add mouse movement listeners 
 	canvas.addEventListener('mousedown',upordown);
 	canvas.addEventListener('mousemove',drawPoint);
 	canvas.addEventListener('mouseup',upordown);
@@ -90,25 +91,32 @@ var draw = function(){
 		setbs.innerHTML = bs;
 	}
 
+	// add click listeners to increase and decrease div
 	inc.addEventListener('click', incbs);
 	dec.addEventListener('click', decbs);
 
 	var setcolor = function(e){
 		
+		// get div clicked by obtaining the element which triggered the event with e.target
 		var color = e.target;
 
+		// change fill and stroke color
 		context.fillStyle = color.style.backgroundColor;
 		context.strokeStyle = color.style.backgroundColor;
 
+		// change the previous color class from active to just shade
 		var chkact = document.getElementsByClassName("active")[0];
 		if(chkact) chkact.className = 'shade';
 
-
+		// set current color active
 		color.className += ' active';
 	}
+
+	// load all the div as an array
 	var shade = document.getElementsByClassName("shade");
 	var n = shade.length;
 
+	// add click listeners to the divs 
 	for(var i=0;i<n;i++)
 	{
 		shade[i].addEventListener('click',setcolor);
