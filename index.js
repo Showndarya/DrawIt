@@ -25,8 +25,9 @@ var draw = function(){
 	var shade = document.getElementsByClassName("shade");
 	var n = shade.length;
 
-	// load clear div
+	// load clear and erase div
 	var clear = document.getElementById("clear");
+	var erase = document.getElementById("erase");
 
 	// e is the event passed 
 	var drawPoint = function(e){
@@ -130,5 +131,13 @@ var draw = function(){
 	}
 	
 	clear.addEventListener('click',clrcan);
+
+	// erase parts of canvas
+	var eracan = function(e){
+		context.fillStyle = "#fff";
+		context.strokeStyle = "#fff";
+	}
+	
+	erase.addEventListener('click',eracan);
 	
 }();
