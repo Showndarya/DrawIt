@@ -72,7 +72,7 @@ var draw = function(){
 		if(newbs < minbs) bs=minbs;
 		else if(newbs > maxbs) bs=maxbs;
 		else bs = newbs;
-		
+
 		//// set the changed radius in toolbar
 		setbs.innerHTML = bs;
 	}
@@ -92,5 +92,28 @@ var draw = function(){
 
 	inc.addEventListener('click', incbs);
 	dec.addEventListener('click', decbs);
+
+	var setcolor = function(e){
+		
+		var color = e.target;
+
+		context.fillStyle = color.style.backgroundColor;
+		context.strokeStyle = color.style.backgroundColor;
+
+		var chkact = document.getElementsByClassName("active")[0];
+		if(chkact) chkact.className = 'shade';
+
+
+		color.className += ' active';
+	}
+	var shade = document.getElementsByClassName("shade");
+	var n = shade.length;
+
+	for(var i=0;i<n;i++)
+	{
+		shade[i].addEventListener('click',setcolor);
+	}
+
+
 	
 }();

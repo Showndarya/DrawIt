@@ -1,15 +1,28 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="index.css">
+		<title>Draw It!</title>
 	</head>
 	<body style='margin: 0;'>
 
 		<div id="toolbar">
+
 			<div id="brush">
 				Brush Size <span id="bsize">15</span>
 				<div id="dec" class="bsb">-</div>
 				<div id="inc" class="bsb">+</div>
 			</div>
+
+			<div id="title"> Draw it </div>
+
+			<div id="color">
+			 	<div class="shade active" style="background-color:#000; "></div>
+			 	<div class="shade" style="background-color: #fff; "></div>
+			 	<div class="shade" style="background-color: #99c2ff;"></div>
+			 	<div class="shade" style="background-color: #ff6666;"></div>
+			 	<div class="shade" style="background-color: #99ff99;"></div>
+			 </div>
+
 		</div>
 
 		<canvas id="canvas"></canvas>
