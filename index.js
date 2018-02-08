@@ -1,4 +1,4 @@
-var draw = (function(){
+var draw = function(){
 
 	// get canvas element
 	var canvas = document.getElementById("canvas");
@@ -13,20 +13,26 @@ var draw = (function(){
     // check if mouse button is pressed
 	var down = false;
 
+	// initialize all entities related to brush size 
+	var maxbs = 50, 
+		minbs = 0.5,  
+		setbs = document.getElementById("bsize"), 
+		inc = document.getElementById("inc"),
+		dec = document.getElementById("dec");
+	bs = 15;
+
 	// e is the event passed 
-	var drawPoint = function(e)
-	{
+	var drawPoint = function(e){
 		// if mouse button is clicked
-		if(this.down == true)
-		{
+		if(this.down == true){
 			//connect current point with previous point
 			context.lineTo(e.clientX, e.clientY);
-			context.lineWidth = 20;
+			context.lineWidth = bs*2;
 			context.stroke();
 
 			// create point
 			context.beginPath();
-			context.arc(e.clientX, e.clientY, 10,0,2*Math.PI);
+			context.arc(e.clientX, e.clientY, bs, 0, 2*Math.PI);
 
 			// fill the point
 			context.fill();
@@ -37,21 +43,18 @@ var draw = (function(){
 		}
 	}
 
-	var upordown = function(e)
-	{
-		if(this.down == true) 
-		{
+	var upordown = function(e){
+		if(this.down == true){
 			// mouse button is unclicked
 			this.down=false;
 
 			// clear previous path by starting new path
 			context.beginPath();
 		}
-		else 
-		{
+		else{
 			// mouse button is clicked
 			this.down = true;
-			
+
 			// draw point on the click
 			drawPoint(e);
 		}
@@ -61,4 +64,33 @@ var draw = (function(){
 	canvas.addEventListener('mousemove',drawPoint);
 	canvas.addEventListener('mouseup',upordown);
 
-})()
+	// decrese brush size by half
+	var decbs = function(){
+
+		var newbs = bs/2;
+
+		if(newbs < minbs) bs=minbs;
+		else if(newbs > maxbs) bs=maxbs;
+		else bs = newbs;
+		
+		//// set the changed radius in toolbar
+		setbs.innerHTML = bs;
+	}
+
+	// increase brush size twice
+	var incbs = function(){
+
+		var newbs = bs*2;
+		
+		if(newbs < minbs) bs=minbs;
+		else if(newbs > maxbs) bs=maxbs;
+		else bs = newbs;
+
+		// set the changed radius in toolbar
+		setbs.innerHTML = bs;
+	}
+
+	inc.addEventListener('click', incbs);
+	dec.addEventListener('click', decbs);
+	
+}();
