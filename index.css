@@ -79,3 +79,16 @@
 	display: inline-block;
 	text-align: center;
 }
+
+#save{
+	float: left;
+	width: 50px;
+	height: 30px;
+	padding: 5px;
+	margin-left: 15px;
+	background-color: #606060;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+}

@@ -25,9 +25,10 @@ var draw = function(){
 	var shade = document.getElementsByClassName("shade");
 	var n = shade.length;
 
-	// load clear and erase div
+	// load clear, erase and save div
 	var clear = document.getElementById("clear");
 	var erase = document.getElementById("erase");
+	var save = document.getElementById("save");
 
 	// e is the event passed 
 	var drawPoint = function(e){
@@ -139,5 +140,13 @@ var draw = function(){
 	}
 	
 	erase.addEventListener('click',eracan);
+
+	// save canvas drawing as .png
+	var savecan = function(e){
+		e.target.href = canvas.toDataURL();
+		e.target.download =  "myDrawIt.png"; 
+	}
+
+	save.addEventListener('click',savecan);
 	
 }();
