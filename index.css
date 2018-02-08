@@ -47,13 +47,23 @@
 }
 
 .shade{
-	width: 30px;
-	height: 30px;
-	border-radius: 15px;
-	display: inline-block;
-	margin-left: 10px;
+	width: 30px !important;
+	height: 30px !important;
+	border-radius: 15px !important;
+	display: inline-block !important;
+	margin-left: 10px !important;
 }
 
 .shade.active{
 	border:2px solid white;
+}
+
+#clear{
+	float: left;
+	width: 50px;
+	height: 30px;
+	padding: 5px;
+	background-color: #606060;
+	display: inline-block;
+	text-align: center;
 }

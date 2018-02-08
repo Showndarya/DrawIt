@@ -21,6 +21,13 @@ var draw = function(){
 		dec = document.getElementById("dec");
 	bs = 15;
 
+	// load all the div as an array
+	var shade = document.getElementsByClassName("shade");
+	var n = shade.length;
+
+	// load clear div
+	var clear = document.getElementById("clear");
+
 	// e is the event passed 
 	var drawPoint = function(e){
 		// if mouse button is clicked
@@ -68,7 +75,7 @@ var draw = function(){
 	// decrese brush size by half
 	var decbs = function(){
 
-		var newbs = bs/2;
+		var newbs = bs-5;
 
 		if(newbs < minbs) bs=minbs;
 		else if(newbs > maxbs) bs=maxbs;
@@ -81,7 +88,7 @@ var draw = function(){
 	// increase brush size twice
 	var incbs = function(){
 
-		var newbs = bs*2;
+		var newbs = bs+5;
 		
 		if(newbs < minbs) bs=minbs;
 		else if(newbs > maxbs) bs=maxbs;
@@ -112,10 +119,6 @@ var draw = function(){
 		color.className += ' active';
 	}
 
-	// load all the div as an array
-	var shade = document.getElementsByClassName("shade");
-	var n = shade.length;
-
 	// add click listeners to the divs 
 	for(var i=0;i<n;i++)
 	{
@@ -123,5 +126,11 @@ var draw = function(){
 	}
 
 
+	// clear the entire canvas
+	var clrcan = function(e){
+		context.clearRect(0, 0, canvas.width, canvas.height);
+	}
+	
+	clear.addEventListener('click',clrcan);
 	
 }();
