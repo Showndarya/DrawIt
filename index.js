@@ -31,7 +31,7 @@ var draw = function(){
 	// e is the event passed 
 	var drawPoint = function(e){
 		// if mouse button is clicked
-		if(this.down == true){
+		if(down == true){
 			//connect current point with previous point
 			context.lineTo(e.clientX, e.clientY);
 			context.lineWidth = bs*2;
@@ -51,16 +51,16 @@ var draw = function(){
 	}
 
 	var upordown = function(e){
-		if(this.down == true){
+		if(down == true){
 			// mouse button is unclicked
-			this.down=false;
+			down=false;
 
 			// clear previous path by starting new path
 			context.beginPath();
 		}
 		else{
 			// mouse button is clicked
-			this.down = true;
+			down = true;
 
 			// draw point on the click
 			drawPoint(e);
@@ -102,8 +102,7 @@ var draw = function(){
 	inc.addEventListener('click', incbs);
 	dec.addEventListener('click', decbs);
 
-	var setcolor = function(e){
-		
+	var setcolor = function(e){		
 		// get div clicked by obtaining the element which triggered the event with e.target
 		var color = e.target;
 
@@ -120,8 +119,7 @@ var draw = function(){
 	}
 
 	// add click listeners to the divs 
-	for(var i=0;i<n;i++)
-	{
+	for(var i=0;i<n;i++){
 		shade[i].addEventListener('click',setcolor);
 	}
 
