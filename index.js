@@ -77,7 +77,7 @@ var draw = function(){
 	// decrese brush size by half
 	var decbs = function(){
 
-		var newbs = bs-5;
+		var newbs = bs-2;
 
 		if(newbs < minbs) bs=minbs;
 		else if(newbs > maxbs) bs=maxbs;
@@ -90,7 +90,7 @@ var draw = function(){
 	// increase brush size twice
 	var incbs = function(){
 
-		var newbs = bs+5;
+		var newbs = bs+2;
 		
 		if(newbs < minbs) bs=minbs;
 		else if(newbs > maxbs) bs=maxbs;
