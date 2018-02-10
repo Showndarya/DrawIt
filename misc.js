@@ -17,8 +17,8 @@ var misc = ( () => {
 	// Add event listener
 	erase.addEventListener('click', (e) => {
 
-		// Publish setColor event with white color
-		pubsub.emit('setColor', '#fff');
+		// Publish erase event
+		pubsub.emit('erase');
 	});
 
 	// Get save element from toolbar

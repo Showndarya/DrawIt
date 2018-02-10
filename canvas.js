@@ -79,6 +79,7 @@ var myCanvas = ( () => {
 
 	// Function to set color
 	var setcolor = color => {
+		context.globalCompositeOperation = "source-over"
 		context.fillStyle = color;
 		context.strokeStyle = color;
 	}
@@ -88,10 +89,16 @@ var myCanvas = ( () => {
 		context.clearRect(0, 0, canvas.width, canvas.height);
 	}
 
+	var erase = () => {
+		context.globalCompositeOperation = "destination-out";
+		context.strokeStyle = "rgba(0,0,0,0)";
+	}
+
 	// Subscribe to canvas events that anyone can order
 	pubsub.on('clearCanvas', clrcan);
 	pubsub.on('changeBrush', setBrush);
 	pubsub.on('setColor', setcolor);
+	pubsub.on('erase', erase);
 
 	// Export the canvas object to access from outside
 	return {
