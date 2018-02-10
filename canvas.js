@@ -11,7 +11,7 @@ var myCanvas = ( () => {
 	var bs = 15;
 
 	var drawPoint = e => {
-		if(down == true){
+		if(down == true) {
 			context.lineTo(e.clientX, e.clientY);
 			context.lineWidth = bs*2;
 			context.stroke();
@@ -26,27 +26,31 @@ var myCanvas = ( () => {
 		}
 	}
 
-	var upordown = e => {
-		if(down == true){
+	var mouseup = e => {
+		console.log("mouseup");
+		if(down == true) {
 			down=false;
 			context.beginPath();
 		}
-		else{
+	}
+
+	var mousedown = e => {
+		console.log("mousedown");
+		if(down == false) {
 			down = true;
 			drawPoint(e);
 		}
 	}
 
-	canvas.addEventListener('mousedown',upordown);
+	canvas.addEventListener('mousedown',mousedown);
 	canvas.addEventListener('mousemove',drawPoint);
-	canvas.addEventListener('mouseup',upordown);
+	document.addEventListener('mouseup',mouseup);
 
 	var setBrush = size => {
 		bs = size;
 	}
 
 	var setcolor = color => {
-		console.log("Color: "+color);
 		context.fillStyle = color;
 		context.strokeStyle = color;
 	}
