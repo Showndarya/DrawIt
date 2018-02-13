@@ -4,6 +4,7 @@ var toolbar = ( () => {
 	// Get the toolbar element
 	var toolbar = document.getElementById('toolbar');
 
+
 	// This function returns toolbar element
 	var getToolbar = () => {
 		return toolbar;

@@ -2,7 +2,7 @@
 var misc = ( () => {
 
 	// Get clear element from toolbar
-	var clear = toolbar.getToolbar().childNodes[7];
+	var clear=  toolbar.getToolbar().getElementsByClassName('clear')[0];
 
 	// Add event listener
 	clear.addEventListener('click', (e) => {
@@ -12,7 +12,7 @@ var misc = ( () => {
 	});
 
 	// Get erase element from toolbar
-	var erase = toolbar.getToolbar().childNodes[9];
+	var erase = toolbar.getToolbar().getElementsByClassName('erase')[0];
 
 	// Add event listener
 	erase.addEventListener('click', (e) => {
@@ -22,7 +22,7 @@ var misc = ( () => {
 	});
 
 	// Get save element from toolbar
-	var save = toolbar.getToolbar().childNodes[11];
+	var save = toolbar.getToolbar().getElementsByClassName('save')[0];
 
 	// Add event listener
 	save.addEventListener('click', (e) => {
