@@ -2,7 +2,8 @@
 var colorPallete = ( () => {
 
 	// Get color pallete element from toolbar
-	var colorPallete = toolbar.getToolbar().childNodes[5];
+	var colorPallete = toolbar.getToolbar().getElementsByClassName('color')[0];
+
 
 	// Initialize list of available colors
 	var colors = ["#000", "#fff", "#99c2ff", "#ff6666", "#99ff99", "#ffff80", "#dea562"];

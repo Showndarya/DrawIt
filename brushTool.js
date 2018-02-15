@@ -2,7 +2,7 @@
 var brushTool = ( () => {
 
 	// Get the brush tool element
-	var brushTool = toolbar.getToolbar().childNodes[1];
+	var brushTool = toolbar.getToolbar().getElementsByClassName('brush')[0];
 
 	// Initialize brush size and minimum and maximum size constants
 	var brushSize = 15;
@@ -40,21 +40,25 @@ var brushTool = ( () => {
 	var render = () => {
 
 		// Remove previous listeners to prevent memory leak
-		if( brushTool.childNodes[2] ) {
-			brushTool.childNodes[2].addEventListener('click', decreaseBrushSize);
-			brushTool.childNodes[3].addEventListener('click', increaseBrushSize);
+		if( brushTool.getElementsByClassName('bsb').length > 0) {
+			(brushTool.getElementsByClassName('dec')[0]).addEventListener('click', decreaseBrushSize);
+			(brushTool.getElementsByClassName('inc')[0]).addEventListener('click', increaseBrushSize);
 		}
 
 		// Clear the brush tool
 		brushTool.innerHTML = "";
 
 		// Fill the brush tool
-		brushTool.innerHTML += 'Brush Size <span id="bsize">'+brushSize+'</span><div id="dec" class="bsb">-</div><div id="inc" class="bsb">+</div>'
+		brushTool.innerHTML += `<p class="text">Brush Size <span id="bsize">`
+								+brushSize+`
+								</span></p><div id="dec" class="bsb dec">-</div>
+								<div id="inc" class="bsb inc">+</div>`;
 		
 		// Add listeners
-		brushTool.childNodes[2].addEventListener('click', decreaseBrushSize);
-		brushTool.childNodes[3].addEventListener('click', increaseBrushSize);
-	}
+		(brushTool.getElementsByClassName('dec')[0]).addEventListener('click', decreaseBrushSize);
+		(brushTool.getElementsByClassName('inc')[0]).addEventListener('click', increaseBrushSize);
+
+	} 
 
 	// Render the brush tool initially
 	render();
